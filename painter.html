@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title> Painter by Amirsha</title>
+</head>
+
+<body>
+
+<h2>Painter Entry by Amirsha</h2>
+
+<form>
+    <label for="form1_name">The Hidden Painter Name: </label>
+    <input type ="password" id="form1_name" name="form1_name" value = "Monet"> <br>
+
+    <label for="form1_guess">Guess the Painter: </label>
+    <input type ="text" id="form1_guess" name="form1_guess" autofocus> <br>
+
+    <input type="button" onclick="checkPainter()" value="Check the Guess"
+</form>
+
+
+<p id="result">good/oops counts: </p>
+
+<script> 
+let good = 0;
+let oops = 0;
+function checkPainter (){
+    console.log("Getting form values")
+    name = document.getElementById("form1_name").value
+    guess = document.getElementById("form1_guess").value
+    confirmed = confirm("Ready to submit?")
+    
+    out = document.getElementById("result")
+    if(confirmed){
+        if(name.toLowerCase() == guess.toLowerCase()){
+            console.log("Good")
+            good +=1
+            alert("You got it right")
+            out.innerHTML = "Oops" +oops+"\nGood:" +good
+        }else {
+            console.log("Not good")
+            oops +=1
+            alert("Sorry")
+            out.innerHTML = "Oops:" +oops+"\nGood:" +good
+    }
+    }else {
+    out.innerHTML = "Please try again!"
+    }
+}
+
+</script>
+
+</body>
+</html> 
