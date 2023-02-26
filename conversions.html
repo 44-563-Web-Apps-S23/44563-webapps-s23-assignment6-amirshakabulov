@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>
+			Conversions Page
+		</title>
+	</head>
+ 
+<body>
+
+<h2>Amirsha Kabulov shows currency conversions</h2>
+
+<div>
+	<label for="amount">Enter base amount: </label>
+	<input type ="number" id="amount" value="50" name="amount"> <br>
+
+	<label for="conversion">Enter the converion rate: </label>
+	<input type ="text" id="conversion" name="converion" value="35"> <br>
+
+	<input type="button" onclick="convert()" value="Show converions">
+	<p id="result"></p>
+</div>
+
+
+<script> 
+function convert(){
+    console.log("Getting values")
+    base = document.getElementById("amount").value
+    conversionRate = document.getElementById("conversion").value
+    let toShow ="";
+    
+    var value = base;
+	for (let i=1; i<=5; i++){
+		var result = (value * conversionRate).toFixed(1);
+		toShow += value + " is " + result + "; ";
+        value = value * 2;
+	}
+	document.getElementById("result").innerHTML= "Conversions are: " + toShow;
+}
+function chooseOp() {
+    console.log("Getting operator")
+    base = document.getElementById("amount").value
+    conversionRate = document.getElementById("conversion").value
+    let toShow ="";
+
+    if (document.getElementById("mean").checked == true) {
+      result = (base + conversionRate) / 2;
+    } else if (document.getElementById("maximum").checked == true) {
+      result = base > conversionRate ? base : conversionRate;
+    } else if (document.getElementById("minimum").checked == true) {
+      result = base < conversionRate ? base : conversionRate;
+    }
+    document.getElementById("result_calc").innerHTML = "Answer: " + result
+  } 
+
+</script>
+<form>
+    <label>
+        <input type = "radio" onClick = "chooseOp()" value="average" id="mean">
+      Average
+    </label>
+    <label>
+        <input type = "radio" onClick = "chooseOp()" value="maximum" id="maximum">
+      Max
+    </label>
+    <label>
+        <input type = "radio" onClick = "chooseOp()" value="minimum" id="minimum">
+      Min
+    </label>
+  </form>
+  
+  <div id="result_calc"></div>
+</body>
+</html> 
