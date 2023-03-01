@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+ 
+<body>
+
+<h2>Amirsha chooses candy</h2>
+
+<form>
+    <label>
+        <input type = "checkbox" id = "dark" value = "True">
+         Dark Chocolate
+    </label><br>
+    <label>
+        <input type = "checkbox" id = "desenuts" value = "True">
+        Nuts
+    </label><br>
+    <label>
+        <input type = "checkbox" id = "arechewy" value = "False">
+        Chewy
+    </label><br>
+    <input type="button" onclick="selectBox()" value="Select the box">
+</form><br>
+
+<form>
+    <label for="form1_age">What is your age </label>
+    <input type ="number" id="form1_age" name="form1_age" min=10 max=50 step=2 value=30> <br>
+
+    <label for="form1_nick">What is your nickname </label>
+    <input type ="text" id="form1_nick" name="form1_nick" autofocus> <br>
+
+    <input type="button" onclick="resolveForm()" value="Get values from form">
+
+</form><br>
+
+<div id = "my_candy_box"></div>
+<br>
+
+<script> 
+
+let my_candy_box = {};
+
+function selectBox (){
+    if(document.getElementById("dark").checked == true){
+        my_candy_box["Dark Chocolate"] = "true";
+    }else{
+        my_candy_box["Dark Chocolate"] = "false"
+    }
+    if(document.getElementById("desenuts").checked == true){
+        my_candy_box["Nuts"] = "true";
+    }else{
+        my_candy_box["Nuts"] = "false"
+    }
+    if(document.getElementById("arechewy").checked == true){
+        my_candy_box["Chewy"] = "true";
+    }else{
+        my_candy_box["Chewy"] = "false"
+    }
+    console.log(Object.keys(my_candy_box).length + ", " + Object.values(my_candy_box))
+    let result = ""
+    for (const [key, val] of Object.entries(my_candy_box)){
+        result += key + ": " + val + "<br>"
+    }
+    document.getElementById("my_candy_box").innerHTML = result
+    
+}
+</script>
+
+</body>
+</html> 
