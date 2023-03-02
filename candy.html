@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html>
- 
+ <head>
+    <title>
+        ChoosingNuts
+    </title>
+ </head>
 <body>
 
 <h2>Amirsha chooses candy</h2>
@@ -22,13 +26,16 @@
 </form><br>
 
 <form>
-    <label for="form1_age">What is your age </label>
-    <input type ="number" id="form1_age" name="form1_age" min=10 max=50 step=2 value=30> <br>
-
-    <label for="form1_nick">What is your nickname </label>
-    <input type ="text" id="form1_nick" name="form1_nick" autofocus> <br>
-
-    <input type="button" onclick="resolveForm()" value="Get values from form">
+    <label>
+        Enter the size:
+        <input type = "text" id = "size" value = "size">
+    </label><br>
+    <label>
+        Enter the price:
+        <input type = "text" id = "price" value = "0">
+    </label><br>
+    
+    <input type="button" onclick="updateBox()" value="updateBox">
 
 </form><br>
 
@@ -61,8 +68,22 @@ function selectBox (){
         result += key + ": " + val + "<br>"
     }
     document.getElementById("my_candy_box").innerHTML = result
-    
 }
+
+function updateBox(){
+    size = document.getElementById("size").value;
+    price = document.getElementById("price").value;
+    my_candy_box["Size of the box"] = size
+    my_candy_box["Price"] = price
+    let result = ""
+    for(const [key, val] of Object.entries(my_candy_box)){
+        result += key + ": " + val + "<br>"
+    }
+    document.getElementById("my_candy_box").innerHTML = result
+
+}
+    
+
 </script>
 
 </body>
